@@ -6,6 +6,8 @@ package shutdown
 import (
 	"container/list"
 
+	"reflect"
+
 	"github.com/zxfonline/golog"
 )
 
@@ -25,6 +27,9 @@ var Hooker = &ShutdownHooker{
 }
 
 func (this *ShutdownHooker) RegistHook(hook StopNotifier) StopNotifier {
+	if hook == nil || reflect.ValueOf(hook).IsNil() {
+		return nil
+	}
 	this.hookList.PushBack(hook)
 	return hook
 }
