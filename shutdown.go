@@ -12,9 +12,7 @@ import (
 	"github.com/zxfonline/golog"
 )
 
-var (
-	logger *golog.Logger = golog.New("ShutdownHooker")
-)
+var logger *golog.Logger = golog.New("ShutdownHooker")
 
 type StopNotifier interface {
 	Close()
